@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+python-dotenv
+passlib
+python-jose
+apscheduler
+pydantic
+openai

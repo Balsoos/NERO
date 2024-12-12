@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.signup-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 400px;
+    text-align: center;
+}
+
+.signup-card h2 {
+    margin-bottom: 1rem;
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.google-button,
+.github-button {
+    background-color: transparent;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.divider {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider span {
+    color: #aaa;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.name-fields {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.name-fields input {
+    flex: 1;
+}
+
+.signup-form input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.password-note {
+    font-size: 12px;
+    color: #666;
+}
+
+.get-started-button {
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.get-started-button:hover {
+    background-color: #5a4dcd;
+}
+
+.login-redirect {
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+.login-redirect a {
+    color: #6c5ce7;
+    text-decoration: none;
+}
+
+.login-redirect a:hover {
+    text-decoration: underline;
+}
