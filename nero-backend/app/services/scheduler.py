@@ -2,7 +2,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.triggers.date import DateTrigger
 from datetime import datetime
-from app.services.email import send_email
+from app.services.email_service import send_email
 from app.database import SessionLocal
 from app.models.task import Task
 

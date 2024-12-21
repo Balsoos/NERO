@@ -11,6 +11,7 @@ class Task(Base):
     status = Column(String, default="pending")  # pending, completed
     priority = Column(String, default="medium")  # low, medium, high
     due_date = Column(DateTime, nullable=True)
+    category = Column(String, nullable=True)  # New category field
     created_at = Column(DateTime, default=datetime.utcnow)
 # Pydantic model
 class TaskBase(BaseModel):

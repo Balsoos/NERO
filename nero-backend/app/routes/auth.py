@@ -1,10 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends, status
 from sqlalchemy.orm import Session
+from Midterm_submission.app import get_password_hash
 from app.database import get_db
 from app.models.user import User
 from app.services.auth_service import hash_password, verify_password, create_access_token
 from pydantic import BaseModel
-from app.services.logger import log_info, log_warning
+from app.utils.logger import log_info, log_warning
+from app.utils.validators import validate_email
 
 router = APIRouter()
 
@@ -15,21 +17,24 @@ class UserCreate(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str
-@router.post("/register", response_model=dict)
-@router.post("/register", response_model=dict)
+
+@router.post("/register", response_model=Dict[str, str])
 def register_user(user: UserCreate, db: Session = Depends(get_db)):
-    log_info(f"Registration attempt for user: {user.username}")
-    existing_user = db.query(User).filter(User.username == user.username).first()
+    validate_email(user.email)  # Validate email
+    existing_user = db.query(User).filter(User.email == user.email).first()
     if existing_user:
-        log_warning(f"Registration failed: Username {user.username} already exists.")
-        raise HTTPException(status_code=400, detail="Username already registered.")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email is already registered."
+        )
+
     hashed_password = hash_password(user.password)
-    new_user = User(username=user.username, hashed_password=hashed_password)
+    new_user = User(email=user.email, hashed_password=hashed_password)
     db.add(new_user)
     db.commit()
-    log_info(f"User {user.username} registered successfully.")
-    return {"message": "User registered successfully."}
+    db.refresh(new_user)
 
+    return {"message": "User registered successfully."}
 @router.post("/login", response_model=TokenResponse)
 def login_user(user: UserCreate, db: Session = Depends(get_db)):
     log_info(f"Login attempt for user: {user.username}")

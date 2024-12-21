@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "project-nero-439423",
+  "private_key_id": "5b103181f5c19d4d98d6f13db9ae034317725f61",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDl0Rjvm1U//n3v\n4ZJk4w/kXJqrnW4UB2civXqiSWz5hmUUOg8IBruWA9StRUBkr1cZ6nNB58gbgzDA\nP5Jy5u1fb5Wr8mAs49C4u/O/lFqbP9aVQeVd1MFWcWt5WeLKPAbhpQYbt0/fpg1u\nQH//l+h4P8K9dAO9ginvOmOzvEPyn49d9KveGPyPbSSNais6KhvlqPTh/1GGcWUQ\nEiZCY+ELSgGPoK63M0OS11tq67ECoEgjsWjUT3s8Wyv9b/DAzPj+VNDcXrW4uDyz\nmVUyRdIQpXMCzPyfSYioX2ZA6W8yJ2W9xFEtVrYp9K9RIvqwiRqC8nxiXpJYKauo\nLzuFqd+lAgMBAAECggEAJrStiDdnZ4CHeeYKJ6s1Yz70fthkMIPhqzBx7dDDhZAM\nyJgRrYaiw9yPzoH2Gy8L0q3RrSUqJvYUuSBL3EXH71WmBeBrscvJvL9NCXRlQTYC\ngD9pr8C0MkimcvkAURLEju7iBTt9vJtlMi8zT5soWE5W0F0wfxOj1+qD3cLkx8El\nqKCeDTtEHK0W4XVMsBAmefJ5h6nj6Lfvgd1GHNSXhp6YuFjvbyrvqKw6kUk/VU0V\nQM0Ag3Q7yCknjY8aT+ebpiIsrx8dmbqcusQ5lbBBqHxpF7Z7JI3BQzLP2AtC4oBd\nJ5cwezBJBCqzF3QPxnxfPP59Qa9eL77mgPsV8UkiiQKBgQD1vjGkZX7Z45Stwzm1\nWTcB716lIAxrm3Sk5eO9lqSwRI+AW1Io1dvsM4C82WXJs9G5mhujX8qKLF0VAZss\nPuVj+CirL2+FtugGYUVnoRuJZza5sPrAkokveqcwNox/uKOt6o+sMg7K+PJV18QB\n7s3oeADXhm6OrY+ABjl/J0BfSQKBgQDvaLrPEaPxp2e7hAgc1PTr0Su55FiZK1iX\nGCjU2lNUEkKKvO2WJ1RXgNTz31iaxnHdOof4S6cvx3aaJcQ46GWcw9gccBMLdVPc\n+Q1/7GwXlF2icUlr7+DXJD5TC/1qiv2Wq+cXO9gs3Sk3F7CGadxSWRxw63xUd/mz\n9Xb2xCuRfQKBgB7/pe1x7CV6Isgkh0QMA/dXhZ3YxBhS3MzsPuUseovNqjhrzJpg\nF8Tc3lF0LvXZnAwIl5HtRHRXkkpTEIrtSCxrIl4ttqisYOplHMcsuHeFsI6N96OR\nGIMHus1HJEP8O5F1tDfpfJo3+wG/HPeNcyXu9VQ6nfmbhS2GG3yhq+oZAoGBAKwf\nsd9aIXKGFzBb9rEz8nrwwe0+XOySm3jWJ9UQusRA9JJmzrIbyKm4uGI1e7CbaBXU\nFRnQ2nyhfYXKDU+U1illLKUVdrvQOOEwNiJ4yiYRx1gY9t6hchd7uUtf3WySTUvc\nf6LWpc9rmkw/veyFg5+47ZfJ1nOsZlyZ6FP2KhTJAoGBAMhLda3rGJBilrXZtfQf\nzex0W8jhTIm++H2ZdDCPEVai6HJMDOdzqmg6x470JmWCnGsEBw8RYukK1JzLOwXu\neEhvxRk0WTCHKy4s4ipTcRQ4Z9W+UNWUS+Xe5L0BfnTlS4L10bQm6Tp97srGRtML\nEKByWHZQ3Saoe19+UlWzyY4f\n-----END PRIVATE KEY-----\n",
+  "client_email": "nero-calender@project-nero-439423.iam.gserviceaccount.com",
+  "client_id": "110330320210790308454",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nero-calender%40project-nero-439423.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

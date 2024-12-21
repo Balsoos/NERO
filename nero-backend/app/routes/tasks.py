@@ -6,9 +6,11 @@ from app.services.auth_service import decode_access_token
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
 from datetime import datetime, timedelta
-from app.services.logger import log_info, log_error
 from app.services.scheduler import schedule_task_reminder, remove_task_reminder
 from app.models.preferences import preferences
+from app.utils.validators import validate_date, validate_priority
+from app.services.recommendation import recommend_tasks
+
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 @router.get("/test")
@@ -36,12 +38,20 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         )
     return username
 # Create a new task
-@router.post("/", response_model=dict)
+@router.post("/", response_model=dict[str,str])
 def create_task(task: TaskCreate, db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
     user = db.query(User).filter(User.username == current_user).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
     
+    # Schedule a reminder based on user preference
+    if task.due_date:
+        reminder_time = task.due_date - timedelta(minutes=reminder_time_minutes)
+        schedule_task_reminder(new_task.id, current_user, reminder_time)
+    if task.due_date:
+        validate_date(task.due_date)  # Validate due date
+    if task.priority:
+        validate_priority(task.priority)  # Validate priority
     # Get user preference for reminder time
     reminder_time_minutes = user.preferences.reminder_time if user.preferences else 60
 
@@ -49,16 +59,12 @@ def create_task(task: TaskCreate, db: Session = Depends(get_db), current_user: s
         description=task.description,
         priority=task.priority,
         due_date=task.due_date,
-        created_at=datetime.utcnow()
+        created_at=datetime.utcnow(), 
+        user_id=current_user.id
     )
     db.add(new_task)
     db.commit()
     db.refresh(new_task)
-
-    # Schedule a reminder based on user preference
-    if task.due_date:
-        reminder_time = task.due_date - timedelta(minutes=reminder_time_minutes)
-        schedule_task_reminder(new_task.id, current_user, reminder_time)
 
     return {"message": "Task created successfully", "task_id": new_task.id}
 # Get all tasks
@@ -66,7 +72,14 @@ def create_task(task: TaskCreate, db: Session = Depends(get_db), current_user: s
 def get_all_tasks(db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
     tasks = db.query(Task).all()
     return tasks
-
+@router.get("/recommendations", response_model=list)
+def get_recommendations(
+    db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
+    """
+    Fetch task recommendations for the logged-in user.
+    """
+    tasks = recommend_tasks(db, user_id=current_user.id)
+    return tasks
 # Get a task by ID
 @router.get("/{task_id}", response_model=TaskResponse)
 def get_task(task_id: int, db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
@@ -93,7 +106,7 @@ def update_task(task_id: int, task_update: TaskUpdate, db: Session = Depends(get
 
     db.commit()
     db.refresh(task)
-    return {"message": "Task updated successfully"}
+    return {"message": "Task    updated successfully"}
 
 # Delete a task
 @router.delete("/{task_id}", response_model=dict)
